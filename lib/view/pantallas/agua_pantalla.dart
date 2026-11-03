@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
-import '../../viewmodel/agua_viewmodel.dart';
+import '../../controller/agua_controller.dart';
 import '../organismos/formulario_agua.dart';
 
 class AguaPantalla extends StatefulWidget {
@@ -12,6 +11,7 @@ class AguaPantalla extends StatefulWidget {
 }
 
 class _AguaPantallaState extends State<AguaPantalla> {
+  final _controller = AguaController();
   final _formKey = GlobalKey<FormState>();
   final _cuentaController = TextEditingController();
   final _clienteController = TextEditingController();
@@ -63,7 +63,7 @@ class _AguaPantallaState extends State<AguaPantalla> {
     if (!_formKey.currentState!.validate()) {
       return;
     }
-    final resultado = context.read<AguaViewModel>().calcular(
+    final resultado = _controller.calcular(
       cuenta: _cuentaController.text.trim(),
       cliente: _clienteController.text.trim(),
       lecturaAnterior: double.parse(_anteriorController.text),

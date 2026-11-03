@@ -13,9 +13,11 @@ Aplicación Flutter didáctica para simular el cálculo de una planilla de agua 
 ## Estructura
 
 - `model/`: modelo de datos del cálculo.
-- `viewmodel/`: lógica de cálculo y estado con `ChangeNotifier`.
+- `controller/`: lógica de cálculo de la planilla.
 - `view/pantallas/`: pantallas de inicio, formulario y resultado.
 - `view/atomos/`, `view/moleculas/` y `view/organismos/`: componentes de Atomic Design.
 
-La aplicación usa Provider para conectar la vista con el ViewModel y un tema propio
-basado en tonos azul agua.
+La aplicación implementa MVC: el modelo representa el cálculo, el controlador
+contiene la lógica y las pantallas construyen la vista. También aplica Atomic
+Design mediante átomos, moléculas y organismos, además de un tema propio basado
+en tonos azul agua.

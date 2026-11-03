@@ -1,18 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 import 'view/pantallas/agua_pantalla.dart';
 import 'view/pantallas/inicio_pantalla.dart';
 import 'view/pantallas/resultado_pantalla.dart';
-import 'viewmodel/agua_viewmodel.dart';
 
 void main() {
-  runApp(
-    ChangeNotifierProvider(
-      create: (_) => AguaViewModel(),
-      child: MiAplicacion(),
-    ),
-  );
+  runApp(const MiAplicacion());
 }
 
 class MiAplicacion extends StatelessWidget {

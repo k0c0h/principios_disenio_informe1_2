@@ -10,23 +10,11 @@ class InicioPantalla extends StatefulWidget {
 }
 
 class _InicioPantallaState extends State<InicioPantalla> {
-  final _formKey = GlobalKey<FormState>();
   final _usuarioController = TextEditingController();
   final _contrasenaController = TextEditingController();
   String? _errorInicio;
 
-  @override
-  void dispose() {
-    _usuarioController.dispose();
-    _contrasenaController.dispose();
-    super.dispose();
-  }
-
   void _ingresar() {
-    if (!_formKey.currentState!.validate()) {
-      return;
-    }
-
     if (_usuarioController.text.trim() != 'admin' ||
         _contrasenaController.text != '1234') {
       setState(() {
@@ -55,7 +43,6 @@ class _InicioPantallaState extends State<InicioPantalla> {
           child: SingleChildScrollView(
             padding: EdgeInsets.all(24),
             child: Form(
-              key: _formKey,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
@@ -111,6 +98,14 @@ class _InicioPantallaState extends State<InicioPantalla> {
                     onPressed: _ingresar,
                     icon: Icon(Icons.login_rounded),
                     label: Text('Iniciar sesión'),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      _usuarioController.clear();
+                      _contrasenaController.clear();
+                      setState(() => _errorInicio = null);
+                    },
+                    child: Text('Limpiar'),
                   ),
                 ],
               ),

@@ -1,10 +1,6 @@
-import 'package:flutter/foundation.dart';
-
 import '../model/agua_model.dart';
 
-class AguaViewModel extends ChangeNotifier {
-  AguaModelo? resultado;
-
+class AguaController {
   AguaModelo calcular({
     required String cuenta,
     required String cliente,
@@ -23,7 +19,7 @@ class AguaViewModel extends ChangeNotifier {
     final subtotal = valorConsumo + cargoFijo;
     final recargo = subtotal * 0.05;
 
-    resultado = AguaModelo(
+    return AguaModelo(
       cuenta: cuenta,
       cliente: cliente,
       lecturaAnterior: lecturaAnterior,
@@ -37,7 +33,5 @@ class AguaViewModel extends ChangeNotifier {
       recargo: recargo,
       total: subtotal + recargo,
     );
-    notifyListeners();
-    return resultado!;
   }
 }
